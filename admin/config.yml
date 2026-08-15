@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: tu-usuario/tu-repositorio-name # Cambia esto por tu repo
+  branch: main
+
+media_folder: "images/uploads" # Dónde se guardarán las fotos de los ítems
+public_folder: "/images/uploads"
+
+collections:
+  - name: "items"
+    label: "Mis Ítems"
+    folder: "_items" # Los ítems se guardarán aquí como archivos JSON o Markdown
+    create: true # Permite agregar nuevos ítems
+    delete: true # Permite quitar ítems
+    fields:
+      - { label: "Título del Ítem", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Precio", name: "price", widget: "number" }
+      - { label: "Imagen", name: "image", widget: "image" }
