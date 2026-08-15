@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: tu-usuario/tu-repositorio-name # ¡Cambia esto por tu usuario y repo!
+  name: git-gateway
   branch: main
 
 media_folder: "images/uploads"
@@ -9,10 +8,10 @@ public_folder: "/images/uploads"
 collections:
   - name: "productos"
     label: "Mis Productos"
-    folder: "data/productos" # Aquí se guardará cada producto automáticamente
+    folder: "data/productos"
     create: true
     delete: true
-    extension: "json" # Formato fácil para leer con HTML/JS
+    extension: "json"
     format: "json"
     slug: "{{fields.title}}"
     fields:
