@@ -21,53 +21,49 @@
 
     <script>
         // 1. Configura tu usuario y repositorio de GitHub aquí
-        const USER = "tu-usuario"; 
-        const REPO = "tu-repositorio-name"; 
+const USER = "KingJM95"; 
+const REPO = "ventas-polo-con-dtf"; 
 
-        async function cargarProductos() {
-            const contenedor = document.getElementById('contenedor-productos');
-            try {
-                // Conectamos con la API de GitHub para ver qué archivos hay en data/productos
-                const urlApi = `https://github.com{USER}/${REPO}/contents/data/productos`;
-                const respuesta = await fetch(urlApi);
-                
-                if (!respuesta.ok) {
-                    contenedor.innerHTML = "<p>Aún no hay productos creados. Ve al panel /admin para agregar el primero.</p>";
-                    return;
-                }
-
-                const archivos = await respuesta.json();
-                contenedor.innerHTML = ""; // Limpiamos el texto de carga
-
-                // Recorremos cada archivo JSON encontrado
-                for (let archivo of archivos) {
-                    if (archivo.name.endsWith('.json')) {
-                        // Descargamos el contenido de ese producto
-                        const resProducto = await fetch(archivo.download_url);
-                        const datos = await resProducto.json();
-
-                        // Creamos la tarjeta del producto en HTML
-                        const tarjeta = document.createElement('div');
-                        tarjeta.className = 'card';
-                        tarjeta.innerHTML = `
-                            <img src="${datos.image || 'https://placeholder.com'}" alt="${datos.title}">
-                            <h3>${datos.title}</h3>
-                            <p>${datos.description || ''}</p>
-                            <div class="price">$${datos.price}</div>
-                            <button class="btn">Comprar</button>
-                        `;
-                        contenedor.appendChild(tarjeta);
-                    }
-                }
-            } catch (error) {
-                console.error("Error cargando productos:", error);
-                contenedor.innerHTML = "<p>Error al conectar con la tienda.</p>";
-            }
+async function cargarProductos() {
+    const contenedor = document.getElementById('contenedor-productos');
+    try {
+        // Conectamos con la API de GitHub para ver qué archivos hay en data/productos
+        const urlApi = `https://github.com{USER}/${REPO}/contents/data/productos`;
+        const respuesta = await fetch(urlApi);
+        
+        if (!respuesta.ok) {
+            contenedor.innerHTML = "<p>Aún no hay productos creados. Ve al panel /admin para agregar el primero.</p>";
+            return;
         }
 
-        // Ejecutar la función al abrir la página
-        cargarProductos();
-    </script>
-</body>
-</html>
+        const archivos = await respuesta.json();
+        contenedor.innerHTML = ""; // Limpiamos el texto de carga
 
+        // Recorremos cada archivo JSON encontrado
+        for (let archivo of archivos) {
+            if (archivo.name.endsWith('.json')) {
+                // Descargamos el contenido de ese producto
+                const resProducto = await fetch(archivo.download_url);
+                const datos = await resProducto.json();
+
+                // Creamos la tarjeta del producto en HTML
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'card';
+                tarjeta.innerHTML = `
+                    <img src="${datos.image || 'https://placeholder.com'}" alt="${datos.title}">
+                    <h3>${datos.title}</h3>
+                    <p>${datos.description || ''}</p>
+                    <div class="price">$${datos.price}</div>
+                    <button class="btn">Comprar</button>
+                `;
+                contenedor.appendChild(tarjeta);
+            }
+        }
+    } catch (error) {
+        console.error("Error cargando productos:", error);
+        contenedor.innerHTML = "<p>Error al conectar con la tienda.</p>";
+    }
+}
+
+// Ejecutar la función al abrir la página
+cargarProductos();
