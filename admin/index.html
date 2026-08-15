@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Panel</title>
-  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador de Tienda</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; background: #f5f6fa; color: #333; }
+    .box { max-width: 500px; margin: 50px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+    h2 { color: #2c3e50; }
+    button { background: #2ecc71; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; }
+    button:hover { background: #27ae60; }
+  </style>
 </head>
 <body>
-  <script src="https://unpkg.com"></script>
+  <div class="box">
+    <h2>🚀 Panel de Control Externo</h2>
+    <p>Conecta tu cuenta para gestionar, añadir o quitar los polos de tu catálogo de forma segura.</p>
+    <button id="btn-conectar">Conectar con GitHub</button>
+  </div>
+  <script>
+    document.getElementById('btn-conectar').addEventListener('click', () => {
+      // Autenticación directa por OAuth eliminando intermediarios conflictivos
+      const clienteId = "Iv1.b3f7e654921ca9a5"; 
+      window.location.href = `https://github.com{clienteId}&scope=repo`;
+    });
+  </script>
 </body>
 </html>
+
