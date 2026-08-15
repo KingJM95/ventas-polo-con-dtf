@@ -1,19 +1,22 @@
 backend:
   name: github
-  repo: tu-usuario/tu-repositorio-name # Cambia esto por tu repo
+  repo: tu-usuario/tu-repositorio-name # ¡Cambia esto por tu usuario y repo!
   branch: main
 
-media_folder: "images/uploads" # Dónde se guardarán las fotos de los ítems
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "items"
-    label: "Mis Ítems"
-    folder: "_items" # Los ítems se guardarán aquí como archivos JSON o Markdown
-    create: true # Permite agregar nuevos ítems
-    delete: true # Permite quitar ítems
+  - name: "productos"
+    label: "Mis Productos"
+    folder: "data/productos" # Aquí se guardará cada producto automáticamente
+    create: true
+    delete: true
+    extension: "json" # Formato fácil para leer con HTML/JS
+    format: "json"
+    slug: "{{fields.title}}"
     fields:
-      - { label: "Título del Ítem", name: "title", widget: "string" }
+      - { label: "Nombre del Producto", name: "title", widget: "string" }
+      - { label: "Precio", name: "price", widget: "number", value_type: "float" }
       - { label: "Descripción", name: "description", widget: "text" }
-      - { label: "Precio", name: "price", widget: "number" }
-      - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Imagen del Producto", name: "image", widget: "image" }
