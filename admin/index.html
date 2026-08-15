@@ -4,11 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administracion</title>
+    
     </script>
   </head>
   <body>
-    <script src="https://unpkg.com"></script>
-    <script>
+    <div id="nc-root"></div>
+    <script type="module">
+      // Importación moderna y directa que el traductor no puede romper
+      import CMS from 'https://esm.sh';
+      
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
           if (!user) {
