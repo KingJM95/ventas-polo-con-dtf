@@ -3,16 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel de Administración</title>
-    <!-- Script de autenticación de Netlify -->
+    <title>Panel de Administracion</title>
     </script>
   </head>
   <body>
-    <!-- Librería oficial y actualizada del panel de administración -->
     <script src="https://unpkg.com@^3.1.2/dist/decap-cms.js"></script>
-    
     <script>
-      // Este script ayuda a que Netlify Identity se conecte correctamente con el panel
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
           if (!user) {
@@ -25,4 +21,3 @@
     </script>
   </body>
 </html>
-
