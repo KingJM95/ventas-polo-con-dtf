@@ -1,6 +1,11 @@
-backend: { name: git-gateway, branch: main }
+backend:
+  name: github
+  repo: KingJM95/ventas-polo-con-dtf
+  branch: main
+
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
+
 collections:
   - name: "productos"
     label: "Mis Productos"
@@ -11,7 +16,7 @@ collections:
     format: "json"
     slug: "{{fields.title}}"
     fields:
-      - { label: "Nombre", name: "title", widget: "string" }
+      - { label: "Nombre del Producto", name: "title", widget: "string" }
       - { label: "Precio", name: "price", widget: "number", value_type: "float" }
-      - { label: "Descripcion", name: "description", widget: "text" }
-      - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Imagen del Producto", name: "image", widget: "image" }
