@@ -1,0 +1,17 @@
+backend: { name: git-gateway, branch: main }
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+collections:
+  - name: "productos"
+    label: "Mis Productos"
+    folder: "data/productos"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{fields.title}}"
+    fields:
+      - { label: "Nombre", name: "title", widget: "string" }
+      - { label: "Precio", name: "price", widget: "number", value_type: "float" }
+      - { label: "Descripcion", name: "description", widget: "text" }
+      - { label: "Imagen", name: "image", widget: "image" }
