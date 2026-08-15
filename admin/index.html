@@ -4,11 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administracion</title>
+    <!-- Widget de Autenticación de Netlify -->
     </script>
   </head>
   <body>
-    <script src="https://unpkg.com@^3.1.2/dist/decap-cms.js"></script>
+    <!-- Librería estable del Panel de Control -->
+    <script src="https://unpkg.com"></script>
+    
     <script>
+      // Conector de identidad para redirigir tras loguearse
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
           if (!user) {
